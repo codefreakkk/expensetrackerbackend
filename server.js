@@ -12,7 +12,9 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("hey");
+  balS.find((err, data) => {
+    res.send(data);
+  });
 });
 
 // add balance to your wallet
