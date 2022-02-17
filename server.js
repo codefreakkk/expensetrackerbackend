@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 require("./model/dbcon");
 const cors = require("cors");
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const balS = require("./model/balance");
 const tranS = require("./model/trans");
 const jwt = require("jsonwebtoken");
@@ -190,10 +190,6 @@ app.put("/addbalance", (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log("Listening");
-});
-
 // Login system here
 
 // signup route
@@ -232,4 +228,8 @@ app.post("/login", async (req, res) => {
   } catch (err) {
     res.send({ token: false });
   }
+});
+
+app.listen(PORT, () => {
+  console.log("Listening");
 });
